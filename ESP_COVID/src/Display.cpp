@@ -1,5 +1,5 @@
 #include "Display.h"
-
+#include "SYS.h"
 int value[6] = {0, 0, 0, 0, 0, 0};
 int old_value[6] = { -1, -1, -1, -1, -1, -1};
 int d = 0;
@@ -80,10 +80,11 @@ void DISPLAY_PlotLinear(char *label, int x, int y)
     }
 }
 
-void DISPLAY_PlotPointer(float number)
+void DISPLAY_PlotPointer(float number1)
 {
     if(vrui_StartBodyTemperature)
     {
+       float number = Sys_ReadMLX906(50);
         int dy = 50;
         byte pw = 16;
         value[0] = map(number+4,33,53,0,100);

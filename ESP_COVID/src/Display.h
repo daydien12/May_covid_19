@@ -16,7 +16,7 @@ void DISPLAY_Displaybodyteamp(void);
 void DISPLAY_DisWashingHand(unsigned char vruc_X, unsigned char vruc_Y);
 void DISPLAY_TimeWashHands(unsigned char X, unsigned char Y, unsigned char Number);
 void DISPLAY_PlotLinear(char *label, int x, int y);
-void DISPLAY_PlotPointer(float number);
+void DISPLAY_PlotPointer(float number1);
 #ifdef __cplusplus
 }
 #endif
