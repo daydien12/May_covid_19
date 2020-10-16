@@ -84,7 +84,7 @@ void DISPLAY_PlotPointer(float number1)
 {
     if(vrui_StartBodyTemperature)
     {
-       float number = Sys_ReadMLX906(50);
+       float number = SENSORCT_ReadMLX906(50);
         int dy = 50;
         byte pw = 16;
         value[0] = map(number+4,33,53,0,100);
