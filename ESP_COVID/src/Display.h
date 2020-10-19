@@ -17,6 +17,7 @@ void DISPLAY_DisWashingHand(unsigned char vruc_X, unsigned char vruc_Y);
 void DISPLAY_TimeWashHands(unsigned char X, unsigned char Y, unsigned char Number);
 void DISPLAY_PlotLinear(char *label, int x, int y);
 void DISPLAY_PlotPointer(float number1);
+void Display_2Image(unsigned char X, unsigned char Y, unsigned char select);
 #ifdef __cplusplus
 }
 #endif

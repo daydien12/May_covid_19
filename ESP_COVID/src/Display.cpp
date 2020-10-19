@@ -6,7 +6,7 @@ int d = 0;
 TFT_eSPI tft = TFT_eSPI(); 
 unsigned int vrui_TimeWashHand = 0, vrui_CountTimeWashHand = 0, vrui_StartWashHand = 0, vrui_CountStepWashHand = 0, vrui_NumberDisplay = 0;
 unsigned char vrui_CheckDoneWashHand = 0, vrui_StartBodyTemperature = 0, vrui_CountBodyTemperature = 0;
-void Display_2Image(unsigned char X, unsigned char Y, unsigned char select);
+
 
 void DISPLAY_Init(void)
 {
@@ -84,7 +84,7 @@ void DISPLAY_PlotPointer(float number1)
 {
     if(vrui_StartBodyTemperature)
     {
-       float number = SENSORCT_ReadMLX906(50);
+       float number = number1;//SENSORCT_ReadMLX906(50);
         int dy = 50;
         byte pw = 16;
         value[0] = map(number+4,33,53,0,100);
@@ -157,6 +157,7 @@ void DISPLAY_DisWashingHand(unsigned char vruc_X, unsigned char vruc_Y)
                 Display_2Image(0,0,0);
                 vrui_StartWashHand = 0;
                 vrui_CheckDoneWashHand = 0;
+                vruc_RunStart = 0;
             break;
         }
         vrui_CountStepWashHand++;

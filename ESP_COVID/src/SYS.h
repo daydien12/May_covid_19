@@ -5,11 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+extern unsigned char vruc_ModeStep, vruc_StartStopStep, vruc_RunStart;
 void Sys_Init(void);
-
-char Sys_Check_ReadTemp(unsigned char vruc_Up, unsigned char vruc_Down);
-void Sys_DisplayTemperature(void);
+void Sys_Run();
 #ifdef __cplusplus
 }
 #endif
