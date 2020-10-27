@@ -8,6 +8,4 @@ void setup()
 void loop() 
 {
   Sys_Run();
-  
- // Serial.println(digitalRead(DF_START));
 }

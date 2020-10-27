@@ -4,6 +4,8 @@ AccelStepper stepper = AccelStepper(1, DF_MOTOR_STEP, DF_MOTOR_DIR);
 double vrud_TempReadMLX906 = 0;
 unsigned char vruc_ModeStep = 1, vruc_StartStopStep = 0, vruc_RunStart = 0;
 unsigned int vruc_CountRunStart = 0 ;
+unsigned int  vrui_CountUv = 0 ;
+
 void Sys_Init(void)
 {
     Serial.begin(9600);
@@ -14,6 +16,31 @@ void Sys_Init(void)
 
 void Sys_Run()
 {
+//--------------------------------------------------------------------------   
+    if(digitalRead(DF_UV))
+    {
+        if(vrui_CountUv <= 10000)
+        {   
+            digitalWrite(DF_RELAY,0);
+        }
+        else if(vrui_CountUv > 250000 && vrui_CountUv <= 450000)
+        {
+            digitalWrite(DF_RELAY,1);
+        }
+        else
+        {
+            digitalWrite(DF_RELAY,0);
+        }
+            vrui_CountUv++;
+        delayMicroseconds(1);
+    }
+    else
+    {
+        digitalWrite(DF_RELAY,0);
+        vrui_CountUv = 0;
+    }
+//--------------------------------------------------------------------------
+
     if(digitalRead(DF_START))
     {
         if((vruc_CountRunStart >= 500))
@@ -64,7 +91,6 @@ void Sys_Run()
     {
         SENSORCT_StartWash();
         DISPLAY_DisWashingHand(10,210);
-        //DISPLAY_PlotPointer(((40 - 36.4) * ((float)rand() / RAND_MAX)) + 36.4);
         if(vruc_StartStopStep)
         {
              if(vruc_ModeStep)
@@ -104,6 +130,7 @@ void Sys_Run()
             }
         }
     }
+
 }
 
 
