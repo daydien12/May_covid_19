@@ -4,10 +4,14 @@ int value[6] = {0, 0, 0, 0, 0, 0};
 int old_value[6] = { -1, -1, -1, -1, -1, -1};
 int d = 0;
 TFT_eSPI tft = TFT_eSPI(); 
-unsigned int vrui_TimeWashHand = 0, vrui_CountTimeWashHand = 0, vrui_StartWashHand = 0, vrui_CountStepWashHand = 0, vrui_NumberDisplay = 0;
+unsigned int vrui_TimeWashHand = 0, vrui_StartWashHand = 0, vrui_NumberDisplay = 0;
 unsigned char vrui_CheckDoneWashHand = 0, vrui_StartBodyTemperature = 0, vrui_CountBodyTemperature = 0;
+<<<<<<< Updated upstream
 void Display_2Image(unsigned char X, unsigned char Y, unsigned char select);
 
+=======
+long long vrui_CountTimeWashHand = 0, vrui_CountStepWashHand = 0;
+>>>>>>> Stashed changes
 void DISPLAY_Init(void)
 {
     tft.init();
@@ -84,6 +88,10 @@ void DISPLAY_PlotPointer(float number)
 {
     if(vrui_StartBodyTemperature)
     {
+<<<<<<< Updated upstream
+=======
+       float number = number1;
+>>>>>>> Stashed changes
         int dy = 50;
         byte pw = 16;
         value[0] = map(number+4,33,53,0,100);
@@ -120,16 +128,11 @@ void DISPLAY_PlotPointer(float number)
     }
 }
 
-void DISPLAY_Displaybodyteamp(void)
-{
-    delay(100);
-}
-
 void DISPLAY_DisWashingHand(unsigned char vruc_X, unsigned char vruc_Y)
 {
     if(vrui_StartWashHand)
     {
-         if(vrui_CountTimeWashHand >= 1000)
+         if(vrui_CountTimeWashHand >= 200000)
         {
             vrui_NumberDisplay++;
             DISPLAY_TimeWashHands(50,180,vrui_NumberDisplay);
@@ -139,20 +142,19 @@ void DISPLAY_DisWashingHand(unsigned char vruc_X, unsigned char vruc_Y)
         {
             case 0:
                 tft.fillRect(5, 165, 230, 150, TFT_WHITE);
-                //tft.fillRect(5, 165, 230, 52, TFT_WHITE);
                 DISPLAY_TimeWashHands(50,180,vrui_NumberDisplay);
                 Display_2Image(vruc_X, vruc_Y, 1);
             break;
 
-            case 10000:
+            case 1500000:
                 Display_2Image(vruc_X, vruc_Y, 2);
             break;
 
-            case 20000:
+            case 3000000:
                 Display_2Image(vruc_X, vruc_Y, 3);
             break;
 
-            case 30000:
+            case 4500000:
                 Display_2Image(0,0,0);
                 vrui_StartWashHand = 0;
                 vrui_CheckDoneWashHand = 0;
@@ -160,7 +162,7 @@ void DISPLAY_DisWashingHand(unsigned char vruc_X, unsigned char vruc_Y)
         }
         vrui_CountStepWashHand++;
         vrui_CountTimeWashHand++; 
-        delay(1);
+        delayMicroseconds(1);
     }
     else
     {
