@@ -19,16 +19,16 @@ extern "C" {
 #endif
 
 #define DF_LED 25
-#define DF_BUZZ 33
+#define DF_BUZZ 39
 #define DF_TIMCANCHECKSENSOR 26
 #define DF_SERVO1 14
-#define DF_SERVO2 12
+#define DF_LEDSTART 12
 #define DF_MOTOR_STEP 16
 #define DF_MOTOR_DIR 17
 #define DF_SWITCHITI 13
 #define DF_UV 34
 #define DF_RELAY 32
-#define DF_START 39
+#define DF_START 33
 
 #define TFT_GREY 0x5AEB
 #define DF_TIMERESETVALUE 30000

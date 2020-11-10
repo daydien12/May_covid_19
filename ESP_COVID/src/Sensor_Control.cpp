@@ -6,7 +6,7 @@ void SENSORCT_Init(void)
 {
     mlx.begin();
     pinMode(DF_LED, INPUT);
-    pinMode(DF_BUZZ, OUTPUT);
+    pinMode(DF_BUZZ, INPUT);
     pinMode(DF_MOTOR_DIR, OUTPUT);
     pinMode(DF_MOTOR_STEP, OUTPUT);
     pinMode(DF_TIMCANCHECKSENSOR, INPUT_PULLUP); 
@@ -14,6 +14,7 @@ void SENSORCT_Init(void)
     pinMode(DF_RELAY, OUTPUT);
     pinMode(DF_UV, INPUT);
     pinMode(DF_START, INPUT);
+    pinMode(DF_LEDSTART, OUTPUT);
 }
 
 double SENSORCT_ReadMLX906(int vrui_Count)
@@ -29,7 +30,7 @@ double SENSORCT_ReadMLX906(int vrui_Count)
 
 char SENSORCT_StartWash(void)
 {
-    if(!digitalRead(DF_LED))
+    if(digitalRead(DF_LED))
     {
         vrui_StartWashHand = 1;
        // vrui_StartBodyTemperature = 1;
